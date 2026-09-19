@@ -18,7 +18,6 @@ function initPack() {
 	}
 }
 
-// OK this probably gonna return an array in case you end up with two values.
 function encodeLetter(c) {
 	/*
 	 * We encode 'A' as 1, so that 0 can be used for padding (the thing you're

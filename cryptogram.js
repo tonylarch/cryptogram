@@ -158,9 +158,12 @@ function displayPuzzle(puzzle) {
 
 	for (const c of puzzle.cipher) {
 		let templ = template.content.cloneNode(true);
+		let cipherNode = templ.querySelector(".cipher");
+		let plainNode = templ.querySelector(".plain");
+		let letter = templ.querySelector(".letter");
+
 		if (uppercaseSet.has(c)) {
-			let cipher = templ.querySelector(".cipher");
-			cipher.innerText = c;
+			cipherNode.innerText = c;
 
 			// There won't actually be any attempts right at the start.
 			let plainNode = templ.querySelector(".plain");
@@ -169,15 +172,16 @@ function displayPuzzle(puzzle) {
 			} else {
 				plainNode.innerText = '\u00A0';
 			}
+			letter.addEventListener("click", makeClickHandler(puzzle));
 		} else {
-			templ.querySelector(".letter").innerText = c;
+			cipherNode.innerText = '\u00A0';
+			plainNode.innerText = c;
+			letter.classList.add("non_coding");
 			if (c == " ") {
 				container.append(currentWord);
 				currentWord = newWord();
 			}
 		}
-		let l = templ.querySelector(".letter");
-		l.addEventListener("click", makeClickHandler(puzzle));
 		currentWord.append(templ);
 		container.append(templ);
 	}
@@ -195,6 +199,9 @@ function updateDisplay(puzzle) {
 	let seen = new Map();
 
 	letters.forEach((node) => {
+		if (node.classList.contains("non_coding")) {
+			return;
+		}
 		let cipherNode = node.querySelector(".cipher");
 		if (cipherNode === null) {
 			return;

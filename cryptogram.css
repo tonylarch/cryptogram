@@ -35,6 +35,10 @@ div.letter .plain {
 	min-height: 1em;
 }
 
+div.letter.non_coding .plain {
+	border-bottom: 4px solid transparent;
+}
+
 div.letter .plain.conflicted {
 	color: red;
 }
