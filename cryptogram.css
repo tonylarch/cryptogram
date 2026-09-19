@@ -10,7 +10,7 @@ div.word {
 }
 
 div#unused, div.letter, div#create_text, span.kb_letter {
-	font-size: 2em;
+	font-size: 2rem;
 	font-family: monospace;
 }
 
@@ -39,10 +39,6 @@ div.letter .plain.conflicted {
 	color: red;
 }
 
-dialog#create_puzzle {
-	width: 50%;
-}
-
 dialog#create_puzzle div {
 	margin: 1.1em 0;
 }
@@ -51,7 +47,8 @@ dialog#create_puzzle div#create_text {
 	height: 4em;
 	border: 2px solid #ddd;
 	border-radius: 5px;
-	padding: 0.1em;
+	padding: 0.5em;
+	margin: 0.5em;
 }
 
 div#create_text {
@@ -62,6 +59,7 @@ div#create_text {
 	visibility: visible;
 	font-family: serif;
 	font-style: italic;
+	font-size: 2rem;
 }
 
 .msg.hidden {
@@ -77,9 +75,23 @@ div#keyboard {
 }
 
 span.kb_letter {
-	border: 2px solid #ddd;
+	box-shadow: inset 4px 4px 0px #ffffff,
+		inset -4px -4px 0px #b0b0b0,
+		0px 8px 12px rgba(0, 0, 0, 0.1);
 	display: inline-block;
 	padding: 0.3em;
 	margin: 0.1em;
 	font-size: 3em;
+	background-color: #dde;
+}
+
+span.kb_letter:hover {
+	background-color: white;
+}
+
+button {
+	padding: 1rem;
+	font-size: 2rem;
+	margin: 0.2rem;
+	border-radius: 0.5rem;
 }

@@ -11,6 +11,7 @@
 	<div class="toolbar">
 		<button id="delete">DELETE</button>
 		<button id="reset">RESET</button>
+		<button id="open_create">CREATE</button>
 	</div>
 	<h2>Unused letters:</h2>
 	<div id="unused">
@@ -47,7 +48,7 @@
 		<span class="kb_letter">M</span>
 	</div>
 	<dialog id="create_puzzle">
-		<label>Enter the plaintext of your puzzle here</label>
+		<div class="msg">Enter the plaintext of your new puzzle here:</div>
 		<div id="create_text" contenteditable="true">
 		</div>
 		<p id="created" class="msg hidden">
@@ -73,7 +74,6 @@
 			<button id="close_success">CLOSE</button>
 		</div>
 	</dialog>
-	<button id="open_create">CREATE</button>
 	<template id="letter_template">
 		<div class="letter">
 			<div class="plain">
