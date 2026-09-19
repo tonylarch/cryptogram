@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head>
+	<script type="text/javascript" src="pack.js"></script>
+	<script type="text/javascript" src="cryptogram.js"></script>
+		<link rel="stylesheet" type="text/css" href="cryptogram.css">
+</head>
+<body>
+	<h1>Cryptogram</h1>
+	<div id="puzzle_container">
+	</div>
+	<div class="toolbar">
+		<button id="delete">DELETE</button>
+		<button id="reset">RESET</button>
+	</div>
+	<h2>Unused letters:</h2>
+	<div id="unused">
+	</div>
+	<dialog id="create_puzzle">
+		<label>Enter the plaintext of your puzzle here</label>
+		<div id="create_text" contenteditable="true">
+		</div>
+		<p id="created" class="msg hidden">
+		New puzzle created. The link below has been copied to your clipboard.
+		Please share it with your friends.
+		</p>
+		<div id="url"></div>
+		<div class="toolbar">
+			<button id="create">CREATE</button>
+			<button id="reset_create">RESET</button>
+			<button id="close_create">CLOSE</button>
+		</div>
+	</dialog>
+	<dialog id="solved">
+		<h1>Great success!</h1>
+		<p>
+		Puzzle solved in <span id="time"></span>.
+		</p>
+		<p class="msg">
+		The result has been copied to your clipboard.
+		</p>
+		<div class="toolbar">
+			<button id="close_success">CLOSE</button>
+		</div>
+	</dialog>
+	<button id="open_create">CREATE</button>
+	<template id="letter_template">
+		<div class="letter">
+			<div class="plain">
+			</div>
+			<div class="cipher">
+			</div>
+		</div>
+	</template>
+	<template id="non_coded_letter_template">
+		<div class="letter">
+		</div>
+	</template>
+</body>
