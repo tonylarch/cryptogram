@@ -9,7 +9,7 @@ div.word {
 	flex-shrink: 0;	/* means "don't shrink (i.e. break) me" */
 }
 
-div#unused, div.letter, div#create_text, span.kb_letter {
+div#unused, div.letter, div#create_text, span.kb_letter, p.result {
 	font-size: 2rem;
 	font-family: monospace;
 }
