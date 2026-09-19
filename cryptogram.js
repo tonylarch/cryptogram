@@ -233,6 +233,7 @@ function createPuzzle(text) {
 
 	let ret = letters.join("");
 	let key = makeReverseKey(ret);
+	text = text.replace(/\s+/g, " ");
 	text = text.toUpperCase();
 
 	for (const c of text) {
