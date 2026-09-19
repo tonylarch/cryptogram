@@ -105,8 +105,8 @@ function formatDelta(t) {
 	return ret;
 }
 
-function keyHandler(puzzle, ev) {
-	switch (ev.key) {
+function keyHandler(puzzle, key) {
+	switch (key) {
 	case "Backspace":
 		puzzle.removeAttempt(selectedCipherChar);
 		break;
@@ -119,7 +119,10 @@ function keyHandler(puzzle, ev) {
 		break;
 	default:
 		{
-			let val = ev.key.toUpperCase();
+			if (selectedCipherChar === undefined) {
+				return;
+			}
+			let val = key.toUpperCase();
 			if (!uppercaseSet.has(val)) {
 				return;
 			}
@@ -181,7 +184,7 @@ function displayPuzzle(puzzle) {
 	container.append(currentWord);
 
 	document.addEventListener("keyup", (ev) => {
-		keyHandler(puzzle, ev);
+		keyHandler(puzzle, ev.key);
 	});
 	document.getElementById("unused").innerText = puzzle.getUnused();
 }
@@ -320,6 +323,15 @@ function setupButtons(puzzle) {
 	});
 }
 
+function setupKeyboard(puzzle) {
+	document.querySelectorAll("span.kb_letter").forEach((node) => {
+		node.addEventListener("click", (e) => {
+			let key = e.target.innerText;
+			keyHandler(puzzle, key);
+		});
+	});
+}
+
 function main() {
 	initPack();
 	setupCreate();
@@ -332,6 +344,7 @@ function main() {
 	let p = new Puzzle(cipher, keyString);
 	displayPuzzle(p);
 	setupButtons(p);
+	setupKeyboard(p);
 	startTime = new Date();
 }
 

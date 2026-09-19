@@ -9,16 +9,16 @@ div.word {
 	flex-shrink: 0;	/* means "don't shrink (i.e. break) me" */
 }
 
-div#unused, div.letter, div#create_text {
+div#unused, div.letter, div#create_text, span.kb_letter {
 	font-size: 2em;
 	font-family: monospace;
 }
 
 div.letter {
 	display: inline-block;
-	margin: 0.2em 0.3em;
+	margin: 2px;
 	padding: 0.1em;
-	border: 1px solid transparent;
+	border: 2px solid transparent;
 }
 
 div.letter.current {
@@ -70,4 +70,16 @@ div#create_text {
 
 div.toolbar {
 	margin: 1.1em 0;
+}
+
+div#keyboard {
+	text-align: center;
+}
+
+span.kb_letter {
+	border: 2px solid #ddd;
+	display: inline-block;
+	padding: 0.3em;
+	margin: 0.1em;
+	font-size: 3em;
 }
