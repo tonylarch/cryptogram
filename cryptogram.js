@@ -240,6 +240,9 @@ function createPuzzle(text) {
 		if (uppercaseSet.has(c)) {
 			ret += key.get(c);
 		} else {
+			if (encodeLetter(c) === undefined) {
+				continue;
+			}
 			ret += c;
 		}
 	}
