@@ -295,7 +295,14 @@ function setupCreate() {
 		let url = window.location.href.split('?')[0]
 			+ "?" + packString(createPuzzle(text))
 		navigator.clipboard.writeText(url);
-		document.getElementById("url").innerText = url;
+
+		let link = document.createElement("a");
+		link.href = url;
+		link.textContent = url;
+		link.target = "_blank";
+		link.rel = "noopener";
+
+		document.getElementById("url").append(link);
 		document.getElementById("created").classList.remove("hidden");
 	});
 
