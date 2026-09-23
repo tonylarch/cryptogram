@@ -57,6 +57,7 @@ dialog#create_puzzle div#create_text {
 
 div#create_text {
 	text-transform: uppercase;
+	overflow-y: auto;
 }
 
 .msg {
