@@ -16,12 +16,40 @@ function makeReverseKey(keyString) {
 	return ret;
 }
 
+class SolveTimer {
+	started;	// the time when we last started
+	recorded;	// total recorded time
+
+	constructor() {
+		this.recorded = 0;
+	}
+
+	start() {
+		if (this.started !== undefined) {
+			// if we're already running do nothing
+			return;
+		}
+		this.started = new Date();
+	}
+
+	stop() {
+		if (this.started === undefined) {
+			// if we're not already running do nothing
+			return;
+		}
+		let now = new Date();
+		this.recorded += now - this.started;
+		this.started = undefined;
+	}
+}
+
 class Puzzle {
 	cipher;		// the ciphertext
 	keyString;  // the original key string
 	key;		// a map from cipher to plain
 	attempt;	// a partial map from cipher to plain
 	mapped;		// set of the values from attempt
+	solveTimer;
 
 	constructor(cipher, keyString) {
 		this.cipher = cipher;
@@ -29,6 +57,7 @@ class Puzzle {
 		this.key = makeKey(keyString);
 		this.attempt = new Map();
 		this.mapped = new Set();
+		this.solveTimer = new SolveTimer();
 		this.me = this;
 	}
 
@@ -36,6 +65,7 @@ class Puzzle {
 		let me = this.me;
 		me.attempt.set(cipherChar, plainChar);
 		me.mapped.add(plainChar);
+		this.solveTimer.start();
 	}
 
 	removeAttempt(cipherChar) {
@@ -52,6 +82,7 @@ class Puzzle {
 		let me = this.me;
 		me.attempt = new Map();
 		me.mapped = new Set();
+		this.solveTimer.stop()
 	}
 
 	getUnused() {
@@ -132,14 +163,19 @@ function keyHandler(puzzle, key) {
 	updateDisplay(puzzle);
 
 	if (puzzle.isSolved()) {
+		puzzle.solveTimer.stop();
 		if (solvedTime === undefined) {
 			solvedTime = new Date();
 		}
 		let elapsed = solvedTime - startTime;
 		let delta = formatDelta(elapsed);
-		document.getElementById("time").innerText = delta;
+		let solveTime = formatDelta(puzzle.solveTimer.recorded);
+
+		document.getElementById("total_elapsed").innerText = delta;
+		document.getElementById("solve_time").innerText = solveTime;
 		document.getElementById("solved").showModal();
-		navigator.clipboard.writeText(`Puzzle solved in ${delta}`);
+		navigator.clipboard.writeText(
+			`Puzzle solved in ${solveTime} (total elapsed ${delta})`);
 	}
 }
 
