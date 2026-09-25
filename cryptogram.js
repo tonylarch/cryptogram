@@ -371,7 +371,7 @@ function setupCreate() {
 		let url = window.location.href.split('?')[0]
 			+ "?" + packString(createPuzzle(text))
 		if (document.getElementById("use_emojis").checked) {
-			url += ".";
+			url += "~";
 		}
 		navigator.clipboard.writeText(url);
 
@@ -440,7 +440,7 @@ function main() {
 	let useEmojis = false;
 	let data = window.location.search.slice(1);
 
-	if (data.at(-1) == ".") {
+	if (data.at(-1) == "~") {
 		data = data.slice(0, -1);
 		useEmojis = true;
 	}
