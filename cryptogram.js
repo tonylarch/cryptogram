@@ -1,4 +1,6 @@
 let startTime, solvedTime;
+let emojis = [..."🙂🤬😈🔥😺💚🦠👀🤟🙏🌷🍄🌊🌋🌟🦕🐕🐒🦆🦀🐸🐝🐙🍎🍔🌎"];
+let emojiSet = new Set();
 
 function makeKey(keyString) {
 	let ret = new Map();
@@ -49,6 +51,7 @@ class Puzzle {
 	key;		// a map from cipher to plain
 	attempt;	// a partial map from cipher to plain
 	mapped;		// set of the values from attempt
+	isEmojified;
 	solveTimer;
 
 	constructor(cipher, keyString) {
@@ -105,6 +108,43 @@ class Puzzle {
 		}
 
 		return true;
+	}
+
+	emojify() {
+		let me = this.me;
+
+		let newKey = new Map();
+		for (const [k, v] of me.key) {
+			let index = k.charCodeAt(0) - 65;
+			let emoji = emojis[index];
+			newKey.set(emoji, v);
+		}
+
+		let newCipher = "";
+		console.log(me.cipher);
+		for (const c of me.cipher) {
+			let index = c.charCodeAt(0) - 65;
+			if (index >= 0 && index < 26) {
+				newCipher += emojis[index];
+				console.log(c, index, emojis[index]);
+			} else {
+				newCipher += c;
+			}
+		}
+
+		me.key = newKey;
+		me.cipher = newCipher;
+		me.isEmojified = true;
+	}
+
+	isCipherChar(c) {
+		let me = this.me;
+
+		if (me.isEmojified) {
+			return emojiSet.has(c);
+		} else {
+			return uppercaseSet.has(c);
+		}
 	}
 }
 
@@ -198,7 +238,7 @@ function displayPuzzle(puzzle) {
 		let plainNode = templ.querySelector(".plain");
 		let letter = templ.querySelector(".letter");
 
-		if (uppercaseSet.has(c)) {
+		if (puzzle.isCipherChar(c)) {
 			cipherNode.innerText = c;
 
 			// There won't actually be any attempts right at the start.
@@ -330,6 +370,9 @@ function setupCreate() {
 		let text = createText.innerText;
 		let url = window.location.href.split('?')[0]
 			+ "?" + packString(createPuzzle(text))
+		if (document.getElementById("use_emojis").checked) {
+			url += ".";
+		}
 		navigator.clipboard.writeText(url);
 
 		let link = document.createElement("a");
@@ -382,16 +425,34 @@ function setupKeyboard(puzzle) {
 	});
 }
 
+function initEmojis() {
+	for (const c of emojis) {
+		emojiSet.add(c);
+	}
+}
+
 function main() {
 	initPack();
+	initEmojis();
 	setupCreate();
 	setupSuccess();
 
-	let data = unpackString(window.location.search.slice(1));
+	let useEmojis = false;
+	let data = window.location.search.slice(1);
+
+	if (data.at(-1) == ".") {
+		data = data.slice(0, -1);
+		useEmojis = true;
+	}
+	data = unpackString(data);
+
 	let keyString = data.slice(0, 26);
 	let cipher = data.slice(26);
 
 	let p = new Puzzle(cipher, keyString);
+	if (useEmojis) {
+		p.emojify();
+	}
 	displayPuzzle(p);
 	setupButtons(p);
 	setupKeyboard(p);

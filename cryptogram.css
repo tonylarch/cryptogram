@@ -1,3 +1,5 @@
+@import "@fontsource/noto-color-emoji";
+
 div#puzzle_container {
 	display: flex;
 	flex-wrap: wrap;
@@ -12,6 +14,10 @@ div.word {
 div#unused, div.letter, div#create_text, span.kb_letter, p.result {
 	font-size: 2rem;
 	font-family: monospace;
+}
+
+div.cipher {
+  font-family: "Noto Color Emoji", sans-serif;
 }
 
 div.letter {
@@ -99,4 +105,9 @@ button {
 	font-size: 2rem;
 	margin: 0.2rem;
 	border-radius: 0.5rem;
+}
+
+input[type="checkbox"] {
+	width: 2em;
+	height: 2em;
 }

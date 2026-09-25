@@ -3,9 +3,10 @@
 	<script type="text/javascript" src="pack.js"></script>
 	<script type="text/javascript" src="cryptogram.js"></script>
 		<link rel="stylesheet" type="text/css" href="cryptogram.css">
+	<link href="https://googleapis.com" rel="stylesheet">
 </head>
 <body>
-	<h1>Cryptogram 0.4</h1>
+	<h1>Cryptogram 0.5</h1>
 	<div id="puzzle_container">
 	</div>
 	<div class="toolbar">
@@ -51,6 +52,9 @@
 		<div class="msg">Enter the plaintext of your new puzzle here:</div>
 		<div id="create_text" contenteditable="true">
 		</div>
+		<label class="msg">
+		<input id="use_emojis" type="checkbox">Use emojis
+		</label>
 		<p id="created" class="msg hidden">
 		New puzzle created. The link below has been copied to your clipboard.
 		Please share it with your friends.
