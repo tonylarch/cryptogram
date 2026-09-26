@@ -1,5 +1,5 @@
 let startTime, solvedTime;
-let emojis = [..."🙂🤬😈🔥😺💚🦠👀🤟🙏🌷🍄🌊🌋🌟🦕🐕🐒🦆🦀🐸🐝🐙🍎🍔🌎"];
+let emojis = [..."🙂🤬😈🔥😺💚🐛👀🤟🙏🌷🍄🌊🌋🌟🦕🐕🐒🦆🦀🐸🐝🐙🍎🍔🌎"];
 let emojiSet = new Set();
 
 function makeKey(keyString) {
