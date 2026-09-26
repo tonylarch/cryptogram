@@ -381,7 +381,7 @@ function setupCreate() {
 		link.target = "_blank";
 		link.rel = "noopener";
 
-		document.getElementById("url").append(link);
+		document.getElementById("url").replaceChildren(link);
 		document.getElementById("created").classList.remove("hidden");
 	});
 
