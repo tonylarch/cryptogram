@@ -11,7 +11,7 @@ function initPack() {
 	reversePunctuationCoding = new Map();
 
 	let i = 27;
-	for (const c of " .,-\"'?!<>;:()") {
+	for (const c of " .,-\"'?!<>;:()—") {
 		punctuationCoding.set(c, i);
 		reversePunctuationCoding.set(i, c);
 		i++;
