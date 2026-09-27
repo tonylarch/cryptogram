@@ -339,6 +339,10 @@ function setupCreate() {
 	let newPuzz = document.getElementById("open_create");
 
 	newPuzz.addEventListener("click", (e) => {
+		// Reset any previously created puzzle
+		document.getElementById("create_text").innerText = "";
+		document.getElementById("url").replaceChildren();
+		document.getElementById("created").classList.add("hidden");
 		document.getElementById("create_puzzle").showModal();
 	});
 
