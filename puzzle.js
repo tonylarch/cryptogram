@@ -98,9 +98,8 @@ class Puzzle {
 		return ret;
 	}
 
-	setAttempt(displayChar, plainChar) {
+	setAttempt(cipherChar, plainChar) {
 		let me = this.me;
-		let cipherChar = me.getCipherChar(displayChar);
 		me.attempt.set(cipherChar, plainChar);
 		me.mapped.add(plainChar);
 		this.solveTimer.start();
@@ -177,7 +176,8 @@ let selectedCipherChar;
 function makeClickHandler(puzzle) {
 	return (ev) => {
 		let letter = ev.currentTarget.closest(".letter");
-		selectedCipherChar = letter.querySelector(".cipher").innerText;
+		let displayChar = letter.querySelector(".cipher").innerText;
+		selectedCipherChar = puzzle.getCipherChar(displayChar);
 		updateDisplay(puzzle);
 	}
 }
