@@ -16,6 +16,10 @@ div#unused, div.letter, div#create_text, span.kb_letter, p.result {
 	font-family: monospace;
 }
 
+a {
+	font-size: 2rem;
+}
+
 div.cipher {
   font-family: "Noto Color Emoji", sans-serif;
 }
@@ -47,23 +51,6 @@ div.letter.non_coding .plain {
 
 div.letter .plain.conflicted {
 	color: red;
-}
-
-dialog#create_puzzle div {
-	margin: 1.1em 0;
-}
-
-dialog#create_puzzle div#create_text {
-	height: 4em;
-	border: 2px solid #ddd;
-	border-radius: 5px;
-	padding: 0.5em;
-	margin: 0.5em;
-}
-
-div#create_text {
-	text-transform: uppercase;
-	overflow-y: auto;
 }
 
 .msg {

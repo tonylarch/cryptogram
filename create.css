@@ -1,0 +1,17 @@
+div#create_puzzle div {
+	margin: 1.1em 0;
+}
+
+div#create_puzzle div#create_text {
+	height: 4em;
+	border: 2px solid #ddd;
+	border-radius: 5px;
+	padding: 0.5em;
+	margin: 0.5em;
+}
+
+div#create_text {
+	text-transform: uppercase;
+	overflow-y: auto;
+}
+

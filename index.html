@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
 	<script type="text/javascript" src="pack.js"></script>
+	<script type="text/javascript" src="puzzle.js"></script>
 	<script type="text/javascript" src="cryptogram.js"></script>
 		<link rel="stylesheet" type="text/css" href="cryptogram.css">
 	<link href="https://googleapis.com" rel="stylesheet">
@@ -12,8 +13,10 @@
 	<div class="toolbar">
 		<button id="delete">DELETE</button>
 		<button id="reset">RESET</button>
-		<button id="open_create">CREATE</button>
 	</div>
+	<p>
+	<a href="create.html">Create new puzzle</a>
+	</p>
 	<h2>Unused letters:</h2>
 	<div id="unused">
 	</div>
@@ -48,24 +51,6 @@
 		<span class="kb_letter">N</span>
 		<span class="kb_letter">M</span>
 	</div>
-	<dialog id="create_puzzle">
-		<div class="msg">Enter the plaintext of your new puzzle here:</div>
-		<div id="create_text" contenteditable="true">
-		</div>
-		<label class="msg">
-		<input id="use_emojis" type="checkbox">Use emojis
-		</label>
-		<p id="created" class="msg hidden">
-		New puzzle created. The link below has been copied to your clipboard.
-		Please share it with your friends.
-		</p>
-		<div id="url"></div>
-		<div class="toolbar">
-			<button id="create">CREATE</button>
-			<button id="reset_create">RESET</button>
-			<button id="close_create">CLOSE</button>
-		</div>
-	</dialog>
 	<dialog id="solved">
 		<h1>Great success!</h1>
 		<p class="result">
