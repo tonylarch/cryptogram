@@ -13,6 +13,7 @@
 	<div class="toolbar">
 		<button id="delete">DELETE</button>
 		<button id="reset">RESET</button>
+		<button id="share">SHARE</button>
 	</div>
 	<p>
 	<a href="create.html">Create new puzzle</a>
@@ -63,6 +64,16 @@
 		</p>
 		<div class="toolbar">
 			<button id="close_success">CLOSE</button>
+		</div>
+	</dialog>
+	<dialog id="share_dialog">
+		<p class="msg">
+		The link below has been copied to your clipboard, so you can paste it
+		into a social media post etc.
+		</p>
+		<div id="url"></div>
+		<div class="toolbar">
+			<button id="close_share">CLOSE</button>
 		</div>
 	</dialog>
 	<template id="letter_template">

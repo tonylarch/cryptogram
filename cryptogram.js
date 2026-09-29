@@ -79,6 +79,25 @@ function setupButtons(puzzle) {
 		selectedCipherChar = undefined;
 		updateDisplay(puzzle);
 	});
+
+	let share = document.getElementById("share_dialog");
+
+	document.getElementById("share").addEventListener("click", (e) => {
+		let url = window.location.href;
+		let link = document.createElement("a");
+
+		link.href = url;
+		link.textContent = url;
+		link.target = "_blank";
+		link.rel = "noopener";
+		navigator.clipboard.writeText(url);
+		document.getElementById("url").replaceChildren(link);
+		share.showModal();
+	});
+
+	document.getElementById("close_share").addEventListener("click", (e) => {
+		share.close();
+	});
 }
 
 function setupKeyboard(puzzle) {
