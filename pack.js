@@ -10,8 +10,9 @@ function initPack() {
 	punctuationCoding = new Map();
 	reversePunctuationCoding = new Map();
 
+	// There should be room for 36 punctuation characters
 	let i = 27;
-	for (const c of " .,-\"'?!<>;:()—") {
+	for (const c of " .,-\"'?!<>;:()—‘’“”‚„‛‟") {
 		punctuationCoding.set(c, i);
 		reversePunctuationCoding.set(i, c);
 		i++;
