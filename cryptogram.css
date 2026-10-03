@@ -1,5 +1,9 @@
 @import "@fontsource/noto-color-emoji";
 
+h1 {
+	text-align: center;
+}
+
 div#puzzle_container {
 	display: flex;
 	flex-wrap: wrap;

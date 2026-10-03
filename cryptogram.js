@@ -90,7 +90,7 @@ function setupButtons(puzzle) {
 		link.textContent = url;
 		link.target = "_blank";
 		link.rel = "noopener";
-		navigator.clipboard.writeText(url);
+		navigator.clipboard.writeText(`${banner}: url`);
 		document.getElementById("url").replaceChildren(link);
 		share.showModal();
 	});

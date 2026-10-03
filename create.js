@@ -73,7 +73,7 @@ function main() {
 		link.textContent = url;
 		link.target = "_blank";
 		link.rel = "noopener";
-		navigator.clipboard.writeText(url);
+		navigator.clipboard.writeText(`CAN YOU SOLVE THE ${banner}?\n\n${url}`);
 		document.getElementById("url").replaceChildren(link);
 		finishedDialog.showModal();
 	});
