@@ -1,4 +1,4 @@
-let banner = "🤗 EM🤔🎷❗GR🗼M 🤗"
+let banner = "🤗 EM🍩JIGRAM 🤗";
 let emojis = [..."🙂🤬😈🔥😺💚🐛👀🤟🙏🌷🍄🌊🌋🌟🦕🐕🐒🦆🦀🐸🐝🐙🍎🍔🌎"];
 let emojiSet = new Set();
 let emojiMap = new Map();	// maps emojis back to regular characters
