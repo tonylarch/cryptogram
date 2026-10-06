@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2026 Tony Larch
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
 const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 let uppercaseSet = new Set();
 let punctuationCoding, reversePunctuationCoding;

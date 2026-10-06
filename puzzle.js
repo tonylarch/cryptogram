@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2026 Tony Larch
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
 let banner = "🤗 EM🍩JIGRAM 🤗";
 let emojis = [..."🙂🤬😈🔥😺💚🐛👀🤟🙏🌷🍄🌊🌋🌟🦕🐕🐒🦆🦀🐸🐝🐙🍎🍔🌎"];
 let emojiSet = new Set();
