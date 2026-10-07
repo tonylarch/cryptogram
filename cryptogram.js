@@ -110,7 +110,8 @@ function setupButtons(puzzle) {
 		link.textContent = url;
 		link.target = "_blank";
 		link.rel = "noopener";
-		navigator.clipboard.writeText(`CAN YOU SOLVE THE ${banner}?\n\n${url}`);
+		navigator.clipboard.writeText(`CAN YOU SOLVE THE ${banner}?\n\n${url}
+#emojigram`);
 		document.getElementById("url").replaceChildren(link);
 	});
 
