@@ -60,8 +60,7 @@ function keyHandler(puzzle, key) {
 		document.getElementById("total_elapsed").innerText = delta;
 		document.getElementById("solve_time").innerText = solveTime;
 		document.getElementById("solved").showModal();
-		navigator.clipboard.writeText(
-			`${banner}
+		navigator.clipboard.writeText(`I SOLVED THE ${banner}!
 Puzzle solved in ${solveTime} (total elapsed ${delta})`);
 	}
 }
