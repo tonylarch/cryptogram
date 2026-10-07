@@ -65,6 +65,10 @@ div.letter .plain.conflicted {
 	color: red;
 }
 
+dialog {
+	width: 60%;
+}
+
 .msg {
 	visibility: visible;
 	font-family: serif;

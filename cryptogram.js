@@ -74,6 +74,23 @@ function setupSuccess() {
 	});
 }
 
+function setupDialog(name, fn) {
+	let dialog = document.getElementById(`${name}_dialog`);
+	let open = document.getElementById(name);
+	let close = document.getElementById(`close_${name}`);
+
+	open.addEventListener("click", (e) => {
+		if (fn !== null) {
+			fn(e);
+		}
+		dialog.showModal();
+	});
+
+	close.addEventListener("click", (e) => {
+		dialog.close();
+	});
+}
+
 function setupButtons(puzzle) {
 	document.getElementById("delete").addEventListener("click", (e) => {
 		puzzle.removeAttempt(selectedCipherChar);
@@ -85,9 +102,7 @@ function setupButtons(puzzle) {
 		updateDisplay(puzzle);
 	});
 
-	let share = document.getElementById("share_dialog");
-
-	document.getElementById("share").addEventListener("click", (e) => {
+	setupDialog("share", (e) => {
 		let url = window.location.href;
 		let link = document.createElement("a");
 
@@ -97,11 +112,16 @@ function setupButtons(puzzle) {
 		link.rel = "noopener";
 		navigator.clipboard.writeText(`CAN YOU SOLVE THE ${banner}?\n\n${url}`);
 		document.getElementById("url").replaceChildren(link);
-		share.showModal();
 	});
 
-	document.getElementById("close_share").addEventListener("click", (e) => {
-		share.close();
+	setupDialog("help", (e) => {
+		if (puzzle.isEmojified) {
+			return;
+		}
+		let el = document.querySelector("#help_dialog .msg");
+		let text = el.innerText;
+		text = text.replace(/emoji/, "cipher letter");
+		el.innerText = text;
 	});
 }
 
