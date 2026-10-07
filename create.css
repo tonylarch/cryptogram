@@ -19,3 +19,6 @@ div#create_text {
 	overflow-y: auto;
 }
 
+p.preview {
+	opacity: 0.5;
+}
