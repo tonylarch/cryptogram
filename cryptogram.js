@@ -23,6 +23,10 @@ function formatDelta(t) {
 }
 
 function keyHandler(puzzle, key) {
+	if (document.querySelector("dialog[open]") !== null) {
+		return;
+	}
+
 	switch (key) {
 	case "Backspace":
 		puzzle.removeAttempt(selectedCipherChar);
